@@ -55,4 +55,20 @@ client.list_rows(table, max_results=5).to_dataframe()
 # Preview the first five entries in the "by" column of the "full" table
 client.list_rows(table, selected_fields=table.schema[:1], max_results=5).to_dataframe()
 
+# Construct a reference to the "global_air_quality" table
+table_ref = dataset_ref.table("global_air_quality")
+
+# API request - fetch the table
+table = client.get_table(table_ref)
+
+# Preview the first five lines of the "global_air_quality" table
+client.list_rows(table, max_results=5).to_dataframe()
+
+# Query to select all the items from the "city" column where the "country" column is 'US'
+query = """
+        SELECT city
+        FROM `bigquery-public-data.openaq.global_air_quality`
+        WHERE country = 'US'
+        """
+        
 
