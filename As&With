@@ -42,3 +42,6 @@ transactions_by_date = query_job.to_dataframe()
 
 # Print the first five rows
 transactions_by_date.head()
+
+transactions_by_date.set_index('trans_date').plot()
+
