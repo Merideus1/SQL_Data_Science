@@ -1,0 +1,17 @@
+# Let's use the table to see which comments generated the most replies. Since:
+
+# the parent column indicates the comment that was replied to, and
+# the id column has the unique ID used to identify each comment,
+# we can GROUP BY the parent column and COUNT() the id column in order to figure out the number of comments that were made as responses to a specific comment. 
+# (This might not make sense immediately -- take your time here to ensure that everything is clear!)
+
+# Furthermore, since we're only interested in popular comments, we'll look at comments with more than ten replies. So, we'll only return groups HAVING more than ten ID's.
+
+# Query to select comments that received more than 10 replies
+query_popular = """
+                SELECT parent, COUNT(id)
+                FROM `bigquery-public-data.hacker_news.comments`
+                GROUP BY parent
+                HAVING COUNT(id) > 10
+                """
+                
