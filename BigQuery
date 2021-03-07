@@ -23,3 +23,28 @@ for table in tables:
 # full_201510
 # stories
 
+# Construct a reference to the "full" table
+table_ref = dataset_ref.table("full")
+
+# API request - fetch the table
+table = client.get_table(table_ref)
+
+# Print information on all the columns in the "full" table in the "hacker_news" dataset
+table.schema
+
+"""
+[SchemaField('title', 'STRING', 'NULLABLE', 'Story title', ()),
+ SchemaField('url', 'STRING', 'NULLABLE', 'Story url', ()),
+ SchemaField('text', 'STRING', 'NULLABLE', 'Story or comment text', ()),
+ SchemaField('dead', 'BOOLEAN', 'NULLABLE', 'Is dead?', ()),
+ SchemaField('by', 'STRING', 'NULLABLE', "The username of the item's author.", ()),
+ SchemaField('score', 'INTEGER', 'NULLABLE', 'Story score', ()),
+ SchemaField('time', 'INTEGER', 'NULLABLE', 'Unix time', ()),
+ SchemaField('timestamp', 'TIMESTAMP', 'NULLABLE', 'Timestamp for the unix time', ()),
+ SchemaField('type', 'STRING', 'NULLABLE', 'Type of details (comment, comment_ranking, poll, story, job, pollopt)', ()),
+ SchemaField('id', 'INTEGER', 'NULLABLE', "The item's unique id.", ()),
+ SchemaField('parent', 'INTEGER', 'NULLABLE', 'Parent comment ID', ()),
+ SchemaField('descendants', 'INTEGER', 'NULLABLE', 'Number of story or poll descendants', ()),
+ SchemaField('ranking', 'INTEGER', 'NULLABLE', 'Comment ranking', ()),
+ SchemaField('deleted', 'BOOLEAN', 'NULLABLE', 'Is deleted?', ())]
+"""
