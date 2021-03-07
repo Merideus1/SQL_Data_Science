@@ -45,3 +45,59 @@ transactions_by_date.head()
 
 transactions_by_date.set_index('trans_date').plot()
 
+# If the data is sufficiently old, we might be careful before assuming the data is still relevant to traffic patterns today. 
+# Write a query that counts the number of trips in each year.
+
+# Your results should have two columns:
+
+# year - the year of the trips
+# num_trips - the number of trips in that year
+
+
+# Your code goes here
+rides_per_year_query = """
+                       SELECT EXTRACT(YEAR FROM trip_start_timestamp) AS year, 
+                              COUNT(1) AS num_trips
+                       FROM `bigquery-public-data.chicago_taxi_trips.taxi_trips`
+                       GROUP BY year
+                       ORDER BY year
+                       """
+
+# Set up the query (cancel the query if it would use too much of 
+# your quota)
+safe_config = bigquery.QueryJobConfig(maximum_bytes_billed=10**10)
+rides_per_year_query_job = client.query(rides_per_year_query, job_config=safe_config) # Your code goes here
+
+# API request - run the query, and return a pandas DataFrame
+rides_per_year_result = rides_per_year_query_job.to_dataframe() # Your code goes here
+
+# View results
+print(rides_per_year_result)
+
+
+# You'd like to take a closer look at rides from 2017. Copy the query you used above in rides_per_year_query into the cell below for rides_per_month_query. 
+
+# Then modify it in two ways:
+
+# Your code goes here
+rides_per_month_query = """
+                        SELECT EXTRACT(MONTH FROM trip_start_timestamp) AS month, 
+                               COUNT(1) AS num_trips
+                        FROM `bigquery-public-data.chicago_taxi_trips.taxi_trips`
+                        WHERE EXTRACT(YEAR FROM trip_start_timestamp) = 2017
+                        GROUP BY month
+                        ORDER BY month
+                        """ 
+
+# Set up the query
+safe_config = bigquery.QueryJobConfig(maximum_bytes_billed=10**10)
+rides_per_month_query_job = client.query(rides_per_month_query, job_config=safe_config) # Your code goes here
+
+# API request - run the query, and return a pandas DataFrame
+rides_per_month_result = rides_per_month_query_job.to_dataframe() # Your code goes here
+
+# View results
+print(rides_per_month_result)
+
+
+
