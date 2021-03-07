@@ -94,3 +94,24 @@ first_query = """
               FROM `bigquery-public-data.openaq.global_air_quality`
               WHERE unit = 'ppm'
               """ 
+
+# Which pollution levels were reported to be exactly 0?
+
+# Set zero_pollution_query to select all columns of the rows where the value column is 0.
+# Set zero_pollution_results to a pandas DataFrame containing the query results.
+
+# Query to select all columns where pollution levels are exactly 0
+zero_pollution_query = """
+                       SELECT * 
+                       FROM `bigquery-public-data.openaq.global_air_quality`
+                       WHERE value = 0
+                       """ # Your code goes here
+
+# Set up the query
+safe_config = bigquery.QueryJobConfig(maximum_bytes_billed=10**10)
+query_job = client.query(zero_pollution_query, job_config=safe_config)
+
+# API request - run the query and return a pandas DataFrame
+zero_pollution_results = query_job.to_dataframe() # Your code goes here
+
+print(zero_pollution_results.head())
