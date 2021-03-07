@@ -71,4 +71,13 @@ query = """
         WHERE country = 'US'
         """
         
+# Set up the query
+query_job = client.query(query)
+
+# API request - run the query, and return a pandas DataFrame
+us_cities = query_job.to_dataframe()
+
+# What five cities have the most measurements?
+us_cities.city.value_counts().head()
+
 
