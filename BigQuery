@@ -5,3 +5,21 @@ client = bigquery.Client()
 
 # Using Kaggle's public dataset BigQuery integration.
 
+# Construct a reference to the "hacker_news" dataset
+dataset_ref = client.dataset("hacker_news", project="bigquery-public-data")
+
+# API request - fetch the dataset
+dataset = client.get_dataset(dataset_ref)
+
+# List all the tables in the "hacker_news" dataset
+tables = list(client.list_tables(dataset))
+
+# Print names of all tables in the dataset (there are four!)
+for table in tables:  
+    print(table.table_id)
+    
+# comments
+# full
+# full_201510
+# stories
+
