@@ -45,3 +45,15 @@ improved_df = query_job.to_dataframe()
 # Print the first five rows of the DataFrame
 improved_df.head()
 
+query_good = """
+             SELECT parent, COUNT(id)
+             FROM `bigquery-public-data.hacker_news.comments`
+             GROUP BY parent
+             """
+             
+query_bad = """
+            SELECT author, parent, COUNT(id)
+            FROM `bigquery-public-data.hacker_news.comments`
+            GROUP BY parent
+            """
+            
