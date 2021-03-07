@@ -85,3 +85,4 @@ job_post_scores = safe_query_job.to_dataframe()
 
 # Print average score for job posts
 job_post_scores.score.mean()
+
