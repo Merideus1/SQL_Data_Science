@@ -98,6 +98,3 @@ rides_per_month_result = rides_per_month_query_job.to_dataframe() # Your code go
 
 # View results
 print(rides_per_month_result)
-
-
-
