@@ -35,3 +35,22 @@ New York-Northern New Jersey-Long Island    60
 Name: city, dtype: int64
 """
 
+query = """
+        SELECT city, country
+        FROM `bigquery-public-data.openaq.global_air_quality`
+        WHERE country = 'US'
+        """
+
+query = """
+        SELECT *
+        FROM `bigquery-public-data.openaq.global_air_quality`
+        WHERE country = 'US'
+        """
+        
+# Query to get the score column from every row where the type column has value "job"
+query = """
+        SELECT score, title
+        FROM `bigquery-public-data.hacker_news.full`
+        WHERE type = "job" 
+        """
+ 
