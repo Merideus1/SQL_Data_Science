@@ -45,3 +45,5 @@ query_job = client.query(query, job_config=safe_config)
 # API request - run the query, and convert the results to a pandas DataFrame
 file_count_by_license = query_job.to_dataframe()
 
+# Print the DataFrame
+file_count_by_license
