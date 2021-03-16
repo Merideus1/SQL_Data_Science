@@ -65,3 +65,5 @@ union_query = """
 union_result = client.query(union_query).result().to_dataframe()
 union_result.head()
 
+# Number of users who posted stories or comments on January 1, 2014
+len(union_result)
