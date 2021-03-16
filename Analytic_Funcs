@@ -71,4 +71,23 @@ start_end_result.head()
 # ROWS BETWEEN 3 PRECEDING AND 1 FOLLOWING - the 3 previous rows, the current row, and the following row.
 # ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING - all rows in the partition.
 
+# 1) Analytic aggregate functions
+# As you might recall, AVG() (from the example above) is an aggregate function. The OVER clause is what ensures that it's treated as an analytic (aggregate) function. 
+# Aggregate functions take all of the values within the window as input and return a single value.
+
+# MIN() (or MAX()) - Returns the minimum (or maximum) of input values
+# AVG() (or SUM()) - Returns the average (or sum) of input values
+# COUNT() - Returns the number of rows in the input
+# 2) Analytic navigation functions
+# Navigation functions assign a value based on the value in a (usually) different row than the current row.
+
+# FIRST_VALUE() (or LAST_VALUE()) - Returns the first (or last) value in the input
+# LEAD() (and LAG()) - Returns the value on a subsequent (or preceding) row
+# 3) Analytic numbering functions
+# Numbering functions assign integer values to each row based on the ordering.
+
+# ROW_NUMBER() - Returns the order in which rows appear in the input (starting with 1)
+# RANK() - All rows with the same value in the ordering column receive the same rank value, where the next row receives a rank value which increments by the number 
+# of rows with the previous rank value.
+
 
