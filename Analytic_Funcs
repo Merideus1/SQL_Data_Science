@@ -182,3 +182,16 @@ avg_num_trips_query = """
                       FROM trips_by_day
                       """
 
+# 2) Can you separate and order trips by community area?
+trip_number_query = """
+                    SELECT pickup_community_area,
+                        trip_start_timestamp,
+                        trip_end_timestamp,
+                        RANK() 
+                            OVER (
+                                  PARTITION BY pickup_community_area
+                                  ORDER BY trip_start_timestamp
+                                  ) AS trip_number
+                    FROM `bigquery-public-data.chicago_taxi_trips.taxi_trips`
+                    WHERE DATE(trip_start_timestamp) = '2017-05-01'
+                    """
