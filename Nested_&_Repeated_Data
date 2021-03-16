@@ -1,0 +1,23 @@
+from google.cloud import bigquery
+
+# Create a "Client" object
+client = bigquery.Client()
+
+# Construct a reference to the "google_analytics_sample" dataset
+dataset_ref = client.dataset("google_analytics_sample", project="bigquery-public-data")
+
+# Construct a reference to the "ga_sessions_20170801" table
+table_ref = dataset_ref.table("ga_sessions_20170801")
+
+# API request - fetch the table
+table = client.get_table(table_ref)
+
+# Preview the first five lines of the table
+client.list_rows(table, max_results=5).to_dataframe()
+
+print("SCHEMA field for the 'totals' column:\n")
+print(table.schema[5])
+
+print("\nSCHEMA field for the 'device' column:\n")
+print(table.schema[7])
+
