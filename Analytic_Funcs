@@ -195,3 +195,19 @@ trip_number_query = """
                     FROM `bigquery-public-data.chicago_taxi_trips.taxi_trips`
                     WHERE DATE(trip_start_timestamp) = '2017-05-01'
                     """
+
+# 3) How much time elapses between trips?
+break_time_query = """
+                   SELECT taxi_id,
+                       trip_start_timestamp,
+                       trip_end_timestamp,
+                       TIMESTAMP_DIFF(
+                           trip_start_timestamp, 
+                           LAG(trip_end_timestamp, 1) 
+                               OVER (
+                                    PARTITION BY taxi_id 
+                                    ORDER BY trip_start_timestamp), 
+                           MINUTE) as prev_break
+                   FROM `bigquery-public-data.chicago_taxi_trips.taxi_trips`
+                   WHERE DATE(trip_start_timestamp) = '2017-05-01' 
+                   """
