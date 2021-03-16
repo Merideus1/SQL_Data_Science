@@ -78,11 +78,13 @@ start_end_result.head()
 # MIN() (or MAX()) - Returns the minimum (or maximum) of input values
 # AVG() (or SUM()) - Returns the average (or sum) of input values
 # COUNT() - Returns the number of rows in the input
+
 # 2) Analytic navigation functions
 # Navigation functions assign a value based on the value in a (usually) different row than the current row.
 
 # FIRST_VALUE() (or LAST_VALUE()) - Returns the first (or last) value in the input
 # LEAD() (and LAG()) - Returns the value on a subsequent (or preceding) row
+
 # 3) Analytic numbering functions
 # Numbering functions assign integer values to each row based on the ordering.
 
