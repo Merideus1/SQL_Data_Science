@@ -47,3 +47,6 @@ join_query = """
 join_result = client.query(join_query).result().to_dataframe()
 join_result.head()
 
+# None of these stories received any comments
+join_result.tail()
+
