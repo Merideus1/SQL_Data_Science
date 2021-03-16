@@ -99,4 +99,3 @@ q_and_a_query = """
                     AND a.creation_date >= '2019-01-01' AND a.creation_date < '2019-02-01'
                 GROUP BY owner_user_id
                 """
-
