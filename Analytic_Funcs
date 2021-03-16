@@ -66,3 +66,9 @@ start_end_query = """
 # Run the query, and return a pandas DataFrame
 start_end_result = client.query(start_end_query).result().to_dataframe()
 start_end_result.head()
+
+# ROWS BETWEEN 1 PRECEDING AND CURRENT ROW - the previous row and the current row.
+# ROWS BETWEEN 3 PRECEDING AND 1 FOLLOWING - the 3 previous rows, the current row, and the following row.
+# ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING - all rows in the partition.
+
+
