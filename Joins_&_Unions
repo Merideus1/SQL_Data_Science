@@ -67,3 +67,23 @@ union_result.head()
 
 # Number of users who posted stories or comments on January 1, 2014
 len(union_result)
+
+correct_query = """
+              SELECT q.id AS q_id,
+                  MIN(TIMESTAMP_DIFF(a.creation_date, q.creation_date, SECOND)) as time_to_answer
+              FROM `bigquery-public-data.stackoverflow.posts_questions` AS q
+                  FULL JOIN `bigquery-public-data.stackoverflow.posts_answers` AS a
+              ON q.id = a.parent_id
+              WHERE q.creation_date >= '2018-01-01' and q.creation_date < '2018-02-01'
+              GROUP BY q_id
+              ORDER BY time_to_answer
+                """
+
+# Check your answer
+q_1.check()
+
+# Run the query, and return a pandas DataFrame
+correct_result = client.query(correct_query).result().to_dataframe()
+print("Percentage of answered questions: %s%%" % \
+      (sum(correct_result["time_to_answer"].notnull()) / len(correct_result) * 100))
+print("Number of questions:", len(correct_result))
