@@ -45,4 +45,7 @@ less_data_query = """
                   GROUP BY start_station_name, end_station_name
                   LIMIT 10
                   """
+# Data processed: 0.076 GB
+# Data processed: 0.06 GB
+
 
