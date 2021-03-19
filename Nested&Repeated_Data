@@ -48,4 +48,3 @@ query = """
 # Run the query, and return a pandas DataFrame
 result = client.query(query).result().to_dataframe()
 result.head()
-
