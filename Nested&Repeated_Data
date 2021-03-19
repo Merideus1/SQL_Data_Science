@@ -61,3 +61,14 @@ max_commits_query = """
                     GROUP BY committer_name
                     ORDER BY num_commits DESC
                     """
+
+# 3) What's the most popular programming language?
+pop_lang_query = """
+                 SELECT l.name as language_name, COUNT(*) as num_repos
+                 FROM `bigquery-public-data.github_repos.languages`,
+                     UNNEST(language) AS l
+                 GROUP BY language_name
+                 ORDER BY num_repos DESC
+                 """
+                 
+
