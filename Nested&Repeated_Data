@@ -70,5 +70,12 @@ pop_lang_query = """
                  GROUP BY language_name
                  ORDER BY num_repos DESC
                  """
-                 
+# 4) Which languages are used in the repository with the most languages?
+all_langs_query = """
+                  SELECT l.name, l.bytes
+                  FROM `bigquery-public-data.github_repos.languages`,
+                      UNNEST(language) as l
+                  WHERE repo_name = 'polyrabbit/polyglot'
+                  ORDER BY l.bytes DESC
+                  """
 
