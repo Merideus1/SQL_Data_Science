@@ -86,6 +86,25 @@ small_join_query = """
                    """
 
 show_time_to_run(small_join_query)
+# Time to run: 1272.855 seconds
+# Time to run: 4.494 seconds
 
+# Which of these queries is most worth optimizing?
 
+# 1.
+# A software engineer wrote an app for the shipping department, to see what items need to be shipped and which aisle of the warehouse to go to for those items. 
+# She wants you to write the query. It will involve data that is stored in an orders table, a shipments table and a warehouseLocation table. 
+# The employees in the shipping department will pull up this app on a tablet, hit refresh, and your query results will be shown in a nice interface so they can see 
+# what costumes to send where.
 
+# 2.
+# The CEO wants a list of all customer reviews and complaints… which are conveniently stored in a single reviews table. Some of the reviews are really long… 
+# because people love your pirate costumes for parrots, and they can’t stop writing about how cute they are.
+
+# 3.
+# Dog owners are getting more protective than ever. So your engineering department has made costumes with embedded GPS trackers and wireless communication devices. 
+# They send the costumes’ coordinates to your database once a second. You then have a website where owners can find the location of their dogs (or at least the costumes 
+# they have for those dogs). For this service to work, you need a query that shows the most recent location for all costumes owned by a given human. This will involve 
+# data in a CostumeLocations table as well as a CostumeOwners table.
+
+# Prioritized: 3, 1, 2
