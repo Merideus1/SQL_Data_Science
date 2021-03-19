@@ -78,4 +78,3 @@ all_langs_query = """
                   WHERE repo_name = 'polyrabbit/polyglot'
                   ORDER BY l.bytes DESC
                   """
-
