@@ -108,3 +108,21 @@ show_time_to_run(small_join_query)
 # data in a CostumeLocations table as well as a CostumeOwners table.
 
 # Prioritized: 3, 1, 2
+
+
+WITH LocationsAndOwners AS 
+(
+SELECT * 
+FROM CostumeOwners co INNER JOIN CostumeLocations cl
+   ON co.CostumeID = cl.CostumeID
+),
+LastSeen AS
+(
+SELECT CostumeID, MAX(Timestamp)
+FROM LocationsAndOwners
+GROUP BY CostumeID
+)
+SELECT lo.CostumeID, Location 
+FROM LocationsAndOwners lo INNER JOIN LastSeen ls 
+    ON lo.Timestamp = ls.Timestamp AND lo.CostumeID = ls.CostumeID
+WHERE OwnerID = MitzieOwnerID
