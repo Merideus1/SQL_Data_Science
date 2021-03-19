@@ -24,3 +24,25 @@ show_amount_of_data_scanned(basic_query)
 
 # Data processed: 2523.552 GB
 # Data processed: 2.412 GB
+
+more_data_query = """
+                  SELECT MIN(start_station_name) AS start_station_name,
+                      MIN(end_station_name) AS end_station_name,
+                      AVG(duration_sec) AS avg_duration_sec
+                  FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+                  WHERE start_station_id != end_station_id 
+                  GROUP BY start_station_id, end_station_id
+                  LIMIT 10
+                  """
+show_amount_of_data_scanned(more_data_query)
+
+less_data_query = """
+                  SELECT start_station_name,
+                      end_station_name,
+                      AVG(duration_sec) AS avg_duration_sec                  
+                  FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+                  WHERE start_station_name != end_station_name
+                  GROUP BY start_station_name, end_station_name
+                  LIMIT 10
+                  """
+
