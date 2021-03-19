@@ -22,3 +22,5 @@ show_amount_of_data_scanned(star_query)
 basic_query = "SELECT size, binary FROM `bigquery-public-data.github_repos.contents`"
 show_amount_of_data_scanned(basic_query)
 
+# Data processed: 2523.552 GB
+# Data processed: 2.412 GB
