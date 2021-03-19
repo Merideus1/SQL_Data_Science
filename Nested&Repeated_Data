@@ -48,3 +48,16 @@ query = """
 # Run the query, and return a pandas DataFrame
 result = client.query(query).result().to_dataframe()
 result.head()
+
+# Write a query to find the individuals with the most commits in this table in 2016. Your query should return a table with two columns:
+
+# committer_name - contains the name of each individual with a commit (from 2016) in the table
+# num_commits - shows the number of commits the individual has in the table (from 2016)
+
+max_commits_query = """
+                    SELECT committer.name AS committer_name, COUNT(*) AS num_commits
+                    FROM `bigquery-public-data.github_repos.sample_commits`
+                    WHERE committer.date >= '2016-01-01' AND committer.date < '2017-01-01'
+                    GROUP BY committer_name
+                    ORDER BY num_commits DESC
+                    """
